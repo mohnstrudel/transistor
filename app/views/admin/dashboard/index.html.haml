@@ -1,13 +1,21 @@
-%h1 Admin::Dashboard#index
-%p Control everything in your app
+%h1 Admin::Dashboard
+%p Контролируйте все в вашем приложении!
 
 %p 
-	Listing all projects:
+	Все проекты:
+	%br
 	-@projects.each do |project|
 		=link_to project.title, edit_admin_project_path(project.id)
+		%br
 	%p 
-		=link_to 'Create new project', new_admin_project_path
+		=link_to 'Создать новый проект', new_admin_project_path
 
-%p Listing all services
+%p
+	Все услуги:
+	%br
+	-@services.each do |srvs|
+		=link_to srvs.title, edit_admin_service_path(srvs.id)
+	%p
+		=link_to 'Создать новую услугу', new_admin_service_path
 
 %p Listing teammembers
