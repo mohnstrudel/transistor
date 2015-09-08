@@ -18,4 +18,10 @@
 	%p
 		=link_to 'Создать новую услугу', new_admin_service_path
 
-%p Listing teammembers
+%p 
+	Сотрудники
+	%br
+	-@teammembers.each do |member|
+		=link_to member.name, edit_admin_teammember_path(member.id)
+	%p
+		=link_to 'Создать нового сотрудника', new_admin_teammember_path

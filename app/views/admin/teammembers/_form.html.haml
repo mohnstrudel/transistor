@@ -1,0 +1,11 @@
+=form_for([:admin, @teammember]) do |f|
+	=f.label 'Имя сотрудника'
+	=f.text_field :name
+	%br
+	=f.label 'Должность сотрудника'
+	=f.text_field :position
+	%br
+	=f.label 'Дата выхода сотруника на работу'
+	=f.date_field :workstart
+	%br
+	=f.submit
