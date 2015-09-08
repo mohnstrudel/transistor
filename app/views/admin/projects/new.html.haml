@@ -1,0 +1,10 @@
+%h1 Создать новый проект
+
+=form_for([:admin, @project]) do |f|
+	=f.label 'Название проекта'
+	=f.text_field :title
+	%br
+	=f.label 'Описание проекта'
+	=f.text_area :description
+	%br
+	=f.submit
