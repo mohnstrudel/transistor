@@ -8,4 +8,6 @@
 		=f.label 'Описание проекта'
 		=f.text_area :description
 		%br
+		=collection_check_boxes(:project, :teammember_ids, Teammember.all, :id, :name)
+		%br
 		=f.submit
