@@ -5,4 +5,8 @@
 	=f.label 'Описание услуги'
 	=f.text_area :description
 	%br
-	=f.submit
+	=f.fields_for :servicepic, Servicepic.new, html: { multipart: true, id: "fileupload"  } do |op|
+		= op.label 'Загрузите фотографии услуги'
+		= op.file_field :servicepic, multiple: true, id: 'fileupload', name: "service[servicepics_attributes][][servicepic]"
+	%br
+	=f.submit id: 'submit-data'
