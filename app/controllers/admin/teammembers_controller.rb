@@ -30,7 +30,8 @@ class Admin::TeammembersController < ApplicationController
   private
 
   def member_params
-  	params.require(:teammember).permit(:name, :position, :workstart)
+  	params.require(:teammember).permit(:name, :position, :workstart,
+      avatars_attributes: [:avatar, :teammember_id])
   end
 
   def find_member

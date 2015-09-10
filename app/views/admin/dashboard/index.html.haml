@@ -1,5 +1,15 @@
 %h1 Admin::Dashboard
 %p Контролируйте все в вашем приложении!
+-if user_signed_in?
+	Вы зашли под пользователем:
+	=current_user
+-else
+	=link_to 'Зайти', new_user_session_path
+
+%p.notice
+	=notice
+%p.alert
+	=alert
 
 %p 
 	Все проекты:

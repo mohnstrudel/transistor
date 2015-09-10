@@ -18,6 +18,10 @@ gem "haml-rails", "~> 0.9"
 # Uploading images
 gem 'carrierwave'
 
+# Handling the user stuff
+
+gem 'devise'
+
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 

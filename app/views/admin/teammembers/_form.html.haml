@@ -8,4 +8,8 @@
 	=f.label 'Дата выхода сотруника на работу'
 	=f.date_field :workstart
 	%br
-	=f.submit
+	=f.fields_for :avatar, Avatar.new, html: { multipart: true, id: "fileupload"  } do |op|
+		= op.label 'Загрузите фотографии сотрудника'
+		= op.file_field :avatar, multiple: true, id: 'fileupload', name: "teammember[avatars_attributes][][avatar]"
+	%br
+	=f.submit id: 'submit-data'
