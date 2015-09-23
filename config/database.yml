@@ -82,4 +82,4 @@ production:
   <<: *default
   database: furnitureapp_production
   username: furnitureapp
-  password: <%= ENV['FURNITUREAPP_DATABASE_PASSWORD'] %>
+  password: furniturepsql2015
