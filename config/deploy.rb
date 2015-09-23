@@ -1,5 +1,5 @@
 # Change these
-server '46.101.161.208', port: 3624, roles: [:web, :app, :db], primary: true
+server '46.101.161.208', port: 22, roles: [:web, :app, :db], primary: true
 
 set :repo_url,        'git://github.com/mohnstrudel/furnitureapp.git'
 set :application,     'furnitureapp'
