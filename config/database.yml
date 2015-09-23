@@ -83,3 +83,4 @@ production:
   database: furnitureapp_production
   username: furniture
   password: furniturepsql2015
+  host: localhost
