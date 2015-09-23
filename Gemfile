@@ -19,8 +19,14 @@ gem "haml-rails", "~> 0.9"
 gem 'carrierwave'
 
 # Handling the user stuff
-
 gem 'devise'
+
+# Fonts
+gem "font-awesome-rails"
+gem 'bootstrap-glyphicons'
+
+# Placeholder images
+gem 'holder_rails'
 
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
@@ -40,6 +46,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Unicorn as the app server
 # gem 'unicorn'
 
+# Use freaking puma as the app server!
+gem 'puma'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -49,6 +58,9 @@ group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
+
+  # For awesome error interface
+  gem 'better_errors'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'

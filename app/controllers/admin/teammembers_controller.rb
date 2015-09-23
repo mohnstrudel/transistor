@@ -1,8 +1,10 @@
-class Admin::TeammembersController < ApplicationController
+class Admin::TeammembersController < AdminController
+  layout "admin"
   
 	before_action	:find_member, only: [:update, :edit]
 
   def index
+    @teammembers = Teammember.all
   end
 
   def new
@@ -13,7 +15,7 @@ class Admin::TeammembersController < ApplicationController
   	@teammember = Teammember.new(member_params)
   
   	if @teammember.save
-  		redirect_to admin_path
+  		redirect_to admin_teammembers_path
   	else
   		render 'new'
   	end
@@ -24,7 +26,7 @@ class Admin::TeammembersController < ApplicationController
 
   def update
   	@teammember.update(member_params)
-  	redirect_to admin_path
+  	redirect_to admin_teammembers_path
   end
 
   private

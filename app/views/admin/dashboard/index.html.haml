@@ -1,37 +1,45 @@
-%h1 Admin::Dashboard
-%p Контролируйте все в вашем приложении!
--if user_signed_in?
-	Вы зашли под пользователем:
-	=current_user
--else
-	=link_to 'Зайти', new_user_session_path
-
-%p.notice
-	=notice
-%p.alert
-	=alert
-
-%p 
-	Все проекты:
-	%br
-	-@projects.each do |project|
-		=link_to project.title, edit_admin_project_path(project.id)
-		%br
-	%p 
-		=link_to 'Создать новый проект', new_admin_project_path
-
-%p
-	Все услуги:
-	%br
-	-@services.each do |srvs|
-		=link_to srvs.title, edit_admin_service_path(srvs.id)
-	%p
-		=link_to 'Создать новую услугу', new_admin_service_path
-
-%p 
-	Сотрудники
-	%br
-	-@teammembers.each do |member|
-		=link_to member.name, edit_admin_teammember_path(member.id)
-	%p
-		=link_to 'Создать нового сотрудника', new_admin_teammember_path
+/ dashboard tiles
+.row
+	.col-sm-4.col-xl-3
+		.panel.panel-tile.text-center.br-a.br-grey
+			.panel-body
+				%h1.fs30.mt5.mbn
+					=@projects.count
+				%h6.text-system ПРОЕКТОВ
+			.panel-footer.br-t.p12
+				%span.fs11
+					%i.fa.fa-arrow-up.pr5
+					="#{@recentProjects} СОЗДАНО"
+					%b НЕДЕЛЮ НАЗАД
+	.col-sm-4.col-xl-3
+		.panel.panel-tile.text-center.br-a.br-grey
+			.panel-body
+				%h1.fs30.mt5.mbn
+					=@services.count
+				%h6.text-success УСЛУГ
+			.panel-footer.br-t.p12
+				%span.fs11
+					%i.fa.fa-arrow-up.pr5
+					="#{@recentServices} СОЗДАНО"
+					%b НЕДЕЛЮ НАЗАД
+	.col-sm-4.col-xl-3
+		.panel.panel-tile.text-center.br-a.br-grey
+			.panel-body
+				%h1.fs30.mt5.mbn
+					=@teammembers.count
+				%h6.text-warning СОТРУДНИКОВ
+			.panel-footer.br-t.p12
+				%span.fs11
+					%i.fa.fa-arrow-up.pr5.text-success
+					="#{@recentTeammembers} СОЗДАНО"
+					%b НЕДЕЛЮ НАЗАД
+	.col-sm-3.col-xl-3.visible-xl
+		.panel.panel-tile.text-center.br-a.br-grey
+			.panel-body
+				%h1.fs30.mt5.mbn 6,718
+				%h6.text-danger UNIQUE VISITS
+			.panel-footer.br-t.p12
+				%span.fs11
+					%i.fa.fa-arrow-down.pr5.text-danger
+					6% DECREASE
+					%b 1W AGO

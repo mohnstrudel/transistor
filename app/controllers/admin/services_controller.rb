@@ -1,5 +1,11 @@
-class Admin::ServicesController < ApplicationController
+class Admin::ServicesController < AdminController
+	layout "admin"
+	
 	before_action :find_service, only: [:edit, :update]
+
+	def index
+		@services = Service.all
+	end
 
 	def new
 		@service = Service.new
@@ -8,7 +14,7 @@ class Admin::ServicesController < ApplicationController
 	def create
 		@service = Service.new(service_params)
 		if @service.save
-			redirect_to admin_path
+			redirect_to admin_services_path
 		else
 			render 'new'
 		end
@@ -19,7 +25,7 @@ class Admin::ServicesController < ApplicationController
 
 	def update
 		@service.update(service_params)
-		redirect_to admin_path
+		redirect_to admin_services_path
 	end
 
 	private

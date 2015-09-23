@@ -1,13 +1,1 @@
-%h1 Редактирование проекта "#{@project.title}"
-
-%p
-	=form_for([:admin, @project]) do |f|
-		=f.label 'Название проекта'
-		=f.text_field :title
-		%br
-		=f.label 'Описание проекта'
-		=f.text_area :description
-		%br
-		=collection_check_boxes(:project, :teammember_ids, Teammember.all, :id, :name)
-		%br
-		=f.submit
+= render 'form', verb: 'Редактирование'

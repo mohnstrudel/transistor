@@ -1,13 +1,1 @@
-%h1 Создать новый проект
-
-=form_for([:admin, @project]) do |f|
-	=f.label 'Название проекта'
-	=f.text_field :title
-	%br
-	=f.label 'Описание проекта'
-	=f.text_area :description
-	%br
-	=f.fields_for :projectphoto, Projectphoto.new, html: { multipart: true, id: "fileupload"  } do |op|
-		= op.label 'Загрузите фотографии проекта'
-		= op.file_field :image, multiple: true, id: 'fileupload', name: "project[projectphotos_attributes][][image]"
-	=f.submit id: 'submit-data'
+=render 'form', verb: 'Создание' 

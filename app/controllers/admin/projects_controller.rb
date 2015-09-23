@@ -1,6 +1,7 @@
-class Admin::ProjectsController < ApplicationController
+class Admin::ProjectsController < AdminController
+	layout "admin"
 	
-	before_action	:find_project, only: [:show, :edit, :update]
+	before_action	:find_project, only: [:show, :edit, :update, :destroy]
 
 	def new
 		@project = Project.new
@@ -12,7 +13,7 @@ class Admin::ProjectsController < ApplicationController
 
 	def update
 		@project.update!(project_params)
-		redirect_to admin_path
+		redirect_to admin_projects_path
 	end
 	
 	def edit
@@ -24,9 +25,17 @@ class Admin::ProjectsController < ApplicationController
 	def create
 		@project = Project.new(project_params)
 		if @project.save
-			redirect_to root_path
+			redirect_to admin_projects_path
+			flash[:success] = 'Вы успешно создали проект'
 		else
 			render 'new'
+		end
+	end
+
+	def destroy
+		if @project.destroy
+			redirect_to admin_projects_path
+			flash[:info] = 'Вы успешно удалили проект'
 		end
 	end
 
