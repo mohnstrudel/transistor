@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: FurnitureApp_production
-  username: FurnitureApp
+  database: furnitureapp_production
+  username: furnitureapp
   password: <%= ENV['FURNITUREAPP_DATABASE_PASSWORD'] %>
