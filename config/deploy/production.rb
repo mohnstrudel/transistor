@@ -7,6 +7,27 @@
 # server 'example.com', user: 'deploy', roles: %w{app web}, other_property: :other_value
 # server 'db.example.com', user: 'deploy', roles: %w{db}
 
+set :port, 22
+set :user, 'deploy'
+set :deploy_via, :remote_cache
+set :use_sudo, false
+
+server '46.101.161.208',
+  roles: [:web, :app, :db],
+  port: fetch(:port),
+  user: fetch(:user),
+  primary: true
+
+set :deploy_to, "/home/#{fetch(:user)}/apps/#{fetch(:application)}"
+
+set :ssh_options, {
+  forward_agent: true,
+  auth_methods: %w(publickey),
+  user: 'deploy',
+}
+
+set :rails_env, :production
+set :conditionally_migrate, true    
 
 
 # role-based syntax
