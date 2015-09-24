@@ -27,6 +27,11 @@
 										%i.fa.fa-tag
 							.section.mb10
 								%label.field.prepend-icon
+									=f.text_field :desctitle, id: 'desctitle', class: 'event-name gui-input br-light light', placeholder: 'Введите заголовок описания'
+									%label.field-icon{:for => "name2"}
+										%i.fa.fa-tag
+							.section.mb10
+								%label.field.prepend-icon
 									=f.text_area :description, id: 'comment', class: 'gui-textarea br-light bg-light', placeholder: 'Описание проекта', style: 'height: 160px'
 									%label.field-icon{:for => "comment"}
 										%i.fa.fa-comments

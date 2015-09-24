@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
 
-  devise_for :user, :path => '', :path_names => { :sign_in => "login", :sign_out => "logout", :sign_up => "register" }
+  namespace :front do
+  get 'projects/index'
+  end
+
+  get 'front/index'
+
+  devise_for :user, :path => '', :path_names => { :sign_in => "admin/login", :sign_out => "admin/logout", :sign_up => "admin/register" }
   
   namespace :admin do
     get '', to: 'dashboard#index', as: '/'
@@ -10,7 +16,7 @@ Rails.application.routes.draw do
     resources :teammembers
   end
 
-  root 'admin/dashboard#index'
+  root 'front/projects#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

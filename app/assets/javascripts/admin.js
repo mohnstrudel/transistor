@@ -6,7 +6,9 @@
 //= require holder
 
 //= require main
-//= require_tree ../../../vendor/assets/javascripts/.
+//= require_tree ../../../vendor/assets/javascripts/demo/.
+//= require_tree ../../../vendor/assets/javascripts/plugins/.
+//= require_tree ../../../vendor/assets/javascripts/utility/.
 //= require_tree ./admin
 
 
