@@ -1,9 +1,0 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  avatar: MyString
-  teammember_id: 
-
-two:
-  avatar: MyString
-  teammember_id: 
