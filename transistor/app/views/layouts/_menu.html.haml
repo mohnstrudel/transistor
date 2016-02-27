@@ -1,0 +1,564 @@
+/ // LOADING
+.awe-page-loading
+  .awe-loading-wrapper
+    .awe-loading-icon
+      %span.icon.icon-logo
+    .progress
+      .progress-bar.progress-bar-success{"aria-valuemax" => "100", "aria-valuemin" => "0", "aria-valuenow" => "40", :role => "progressbar"}
+/ // END LOADING
+
+#wrapper.main-wrapper
+  %header#header.awe-menubar-header
+    %nav.awemenu-nav.headroom{"data-responsive-width" => "1200"}
+      .container
+        .awemenu-container
+          .navbar-header
+            %ul.navbar-icons
+              %li.menubar-account
+                %a.awemenu-icon{:href => "#", :title => ""}
+                  %i.icon.icon-user-circle
+                  %span.awe-hidden-text Account
+                %ul.submenu.megamenu
+                  %li
+                    .container-fluid
+                      .header-account
+                        .header-account-avatar
+                          %a{:href => "#", :title => ""}
+                            %img.img-circle{:alt => "", :src => "./img/samples/avatars/customers/1.jpg"}
+                        .header-account-username
+                          %h4
+                            %a{:href => "#"} Jessica Alba
+                        %ul
+                          %li
+                            %a{:href => "#"} Invite Friends
+                          %li
+                            %a{:href => "#"} Account Infomation
+                          %li
+                            %a{:href => "#"} Logout
+              %li.menubar-wishlist
+                %a.awemenu-icon{:href => "#", :title => ""}
+                  %i.icon.icon-star
+                  %span.awe-hidden-text Wishlist
+                %ul.submenu.megamenu
+                  %li
+                    .container-fluid
+                      %ul.whishlist
+                        %li
+                          .whishlist-item
+                            .product-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/products/cart/1.jpg"}
+                            .product-body
+                              .whishlist-name
+                                %h3
+                                  %a{:href => "#", :title => ""} Gin Lane Greenport Cotton Shirt
+                              .whishlist-price
+                                %span Price:
+                                %strong $120
+                          %a.remove{:href => "#", :title => ""}
+                            %i.icon.icon-remove
+                        %li
+                          .whishlist-item
+                            .product-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/products/cart/2.jpg"}
+                            .product-body
+                              .whishlist-name
+                                %h3
+                                  %a{:href => "#", :title => ""} Gin Lane Greenport Cotton Shirt
+                              .whishlist-price
+                                %span Price:
+                                %strong $120
+                          %a.remove{:href => "#", :title => ""}
+                            %i.icon.icon-remove
+                        %li
+                          .whishlist-item
+                            .product-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/products/cart/3.jpg"}
+                            .product-body
+                              .whishlist-name
+                                %h3
+                                  %a{:href => "#", :title => ""} Gin Lane Greenport Cotton Shirt
+                              .whishlist-price
+                                %span Price:
+                                %strong $120
+                          %a.remove{:href => "#", :title => ""}
+                            %i.icon.icon-remove
+                      %hr
+                        .whishlist-action
+                          %a.btn.btn-dark.btn-lg.btn-outline.btn-block{:href => "#", :title => ""} View Wishlist
+              %li.menubar-cart
+                %a.awemenu-icon.menu-shopping-cart{:href => "#", :title => ""}
+                  %i.icon.icon-shopping-bag
+                  %span.awe-hidden-text Cart
+                  %span.cart-number 2
+                %ul.submenu.megamenu
+                  %li
+                    .container-fluid
+                      %ul.whishlist
+                        %li
+                          .whishlist-item
+                            .product-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/products/cart/1.jpg"}
+                            .product-body
+                              .whishlist-name
+                                %h3
+                                  %a{:href => "#", :title => ""} Gin Lane Greenport Cotton Shirt
+                              .whishlist-price
+                                %span Price:
+                                %strong $120
+                              .whishlist-quantity
+                                %span Quantity:
+                                %span 1
+                          %a.remove{:href => "#", :title => ""}
+                            %i.icon.icon-remove
+                        %li
+                          .whishlist-item
+                            .product-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/products/cart/2.jpg"}
+                            .product-body
+                              .whishlist-name
+                                %h3
+                                  %a{:href => "#", :title => ""} Gin Lane Greenport Cotton Shirt
+                              .whishlist-price
+                                %span Price:
+                                %strong $120
+                              .whishlist-quantity
+                                %span Quantity:
+                                %span 1
+                          %a.remove{:href => "#", :title => ""}
+                            %i.icon.icon-remove
+                      .menu-cart-total
+                        %span Total
+                        %span.price $180
+                      .cart-action
+                        %a.btn.btn-lg.btn-dark.btn-outline.btn-block{:href => "cart.html", :title => ""} View cart
+                        %a.btn.btn-lg.btn-primary.btn-block{:href => "checkout.html", :title => ""} Proceed To Checkout
+            %ul.navbar-search
+              %li
+                %a#open-search-form.awemenu-icon.awe-menubar-search{:href => "#", :title => ""}
+                  %span.sr-only Search
+                  %span.icon.icon-search
+                #menubar-search-form.menubar-search-form
+                  %form{:action => "index.html", :method => "GET"}
+                    %input.form-control{:name => "s", :placeholder => "Search your entry here...", :type => "text"}
+                      .menubar-search-buttons
+                        %button.btn.btn-sm.btn-white{:type => "submit"} Search
+                        %button#close-search-form.btn.btn-sm.btn-white{:type => "button"}
+                          %span.icon.icon-remove
+                / /.menubar-search-form
+          .awe-logo
+            %a{:href => "index.html", :title => ""}
+              %img{:alt => "", :src => "./img/logo.png"}/
+          / /.awe-logo
+          %ul.awemenu.awemenu-right
+            %li.awemenu-item
+              %a{:href => "#", :title => ""}
+                %span Clothing
+              %ul.awemenu-submenu.awemenu-megamenu{"data-animation" => "fadeup", "data-width" => "100%"}
+                %li.awemenu-megamenu-item
+                  .container-fluid
+                    .awemenu-megamenu-wrapper
+                      .row
+                        .col-lg-3
+                          %h2.upper Clothing
+                          %ul.super
+                            %li
+                              %a{:href => "#", :title => ""} Bestseller
+                            %li
+                              %a{:href => "#", :title => ""} New Arrivals
+                        .col-lg-3
+                          %ul.sublist
+                            %li
+                              %a{:href => "#", :title => ""} Blazers &amp; Vests
+                            %li
+                              %a{:href => "#", :title => ""} Graphics Tees
+                            %li
+                              %a{:href => "#", :title => ""} Jeans
+                            %li
+                              %a{:href => "#", :title => ""} Jackets &amp; Outerwear
+                            %li
+                              %a{:href => "#", :title => ""} Pants
+                        .col-lg-3
+                          %ul.sublist
+                            %li
+                              %a{:href => "#", :title => ""} Shirts
+                            %li
+                              %a{:href => "#", :title => ""} Short &amp; Swim
+                            %li
+                              %a{:href => "#", :title => ""} Tees
+                            %li
+                              %a{:href => "#", :title => ""} Underwear &amp; Socks
+                        .col-lg-3
+                          .awe-media.inline.margin-bottom-25
+                            .awe-media-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/menu/trending-shop.jpg"}
+                            %h4.awe-media-title.medium.upper.center
+                              %a{:href => "#", :title => ""} The trend shop
+                          .awe-media.inline
+                            .awe-media-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/menu/shirt-shop.jpg"}
+                              .awe-media-overlay.overlay-dark-50.fullpage
+                                .fp-table
+                                  .fp-table-cell.center
+                                    %a.btn.btn-white{:href => "#"} Show now
+                            %h4.awe-media-title.medium.upper.center
+                              %a{:href => "#", :title => ""} Shirt shop
+                      .bottom-link
+                        %a.btn.btn-lg.btn-dark.btn-outline{:href => "#"}
+                          %span Shop All Clothing
+            %li.awemenu-item
+              %a{:href => "#", :title => ""}
+                %span Shoes
+              %ul.awemenu-submenu.awemenu-megamenu{"data-animation" => "fadeup", "data-width" => "100%"}
+                %li.awemenu-megamenu-item
+                  .container-fluid
+                    .awemenu-megamenu-wrapper
+                      .row
+                        .col-lg-3
+                          %h2.upper Shoes
+                          %ul.super
+                            %li
+                              %a{:href => "#", :title => ""} Bestseller
+                            %li
+                              %a{:href => "#", :title => ""} New Arrivals
+                        .col-lg-3
+                          %ul.sublist
+                            %li
+                              %a{:href => "#"} Boat Shoes
+                            %li
+                              %a{:href => "#"} Boots
+                            %li
+                              %a{:href => "#"} Casual Shoes
+                            %li
+                              %a{:href => "#"} Dress Shoes
+                            %li
+                              %a{:href => "#"} Sneakers
+                        .col-lg-3
+                          .sublist
+                            %p Shop Size
+                            %ul.numbers-list
+                              %li
+                                %a{:href => "#"} 7
+                              %li
+                                %a{:href => "#"} 7.5
+                              %li
+                                %a{:href => "#"} 7.5
+                              %li
+                                %a{:href => "#"} 8
+                              %li
+                                %a{:href => "#"} 8.5
+                              %li
+                                %a{:href => "#"} 9
+                              %li
+                                %a{:href => "#"} 10
+                              %li
+                                %a{:href => "#"} 10.5
+                              %li
+                                %a{:href => "#"} 11
+                              %li
+                                %a{:href => "#"} 11.5
+                              %li
+                                %a{:href => "#"} 12
+                              %li
+                                %a{:href => "#"} 13
+                        .col-lg-3
+                          .awe-media.inline.margin-bottom-25
+                            .awe-media-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/menu/trending-shoes.jpg"}
+                            %h4.awe-media-title.medium.upper.center
+                              %a{:href => "#", :title => ""} Hot trend shoes
+                          .awe-media.inline
+                            .awe-media-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/menu/dress-shoes.jpg"}
+                            %h4.awe-media-title.medium.upper.center
+                              %a{:href => "#", :title => ""} Dress shoes shop
+                      .bottom-link
+                        %a.btn.btn-lg.btn-dark.btn-outline{:href => "#"}
+                          %span Shop All Shoes
+            %li.awemenu-item
+              %a{:href => "#", :title => ""}
+                %span Accessories
+              %ul.awemenu-submenu.awemenu-megamenu{"data-animation" => "fadeup", "data-width" => "100%"}
+                %li.awemenu-megamenu-item
+                  .container-fluid
+                    .awemenu-megamenu-wrapper
+                      .row
+                        .col-lg-3
+                          %h2.upper Shoes
+                          %ul.super
+                            %li
+                              %a{:href => "#", :title => ""} Bestseller
+                            %li
+                              %a{:href => "#", :title => ""} New Arrivals
+                        .col-lg-3
+                          %ul.sublist
+                            %li
+                              %a{:href => "#", :title => "#"} Bags
+                            %li
+                              %a{:href => "#", :title => "#"} Belts
+                            %li
+                              %a{:href => "#", :title => "#"} Grooming
+                            %li
+                              %a{:href => "#", :title => "#"} Hats
+                            %li
+                              %a{:href => "#", :title => "#"} Jewelry
+                        .col-lg-3
+                          %ul.sublist
+                            %li
+                              %a{:href => "#", :title => ""} Scarves &amp; Glovers
+                            %li
+                              %a{:href => "#", :title => ""} Wallets
+                            %li
+                              %a{:href => "#", :title => ""} Watches
+                            %li
+                              %a{:href => "#", :title => ""} Glasses
+                            %li
+                              %a{:href => "#", :title => ""} Zippo
+                        .col-lg-3
+                          .awe-media.inline.margin-bottom-25
+                            .awe-media-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/menu/trending-accessories.jpg"}
+                            %h4.awe-media-title.medium.upper.center
+                              %a{:href => "#", :title => ""} Hot Trend Accessories
+                          .awe-media.inline
+                            .awe-media-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/menu/new-arrivals.jpg"}
+                            %h4.awe-media-title.medium.upper.center
+                              %a{:href => "#", :title => ""} New Arrivals Swatch
+                      .bottom-link
+                        %a.btn.btn-lg.btn-dark.btn-outline{:href => "#"}
+                          %span Shop All Accessories
+            %li.awemenu-item
+              %a{:href => "#", :title => ""}
+                %span Brand
+              %ul.awemenu-submenu.awemenu-megamenu{"data-animation" => "fadeup", "data-width" => "100%"}
+                %li.awemenu-megamenu-item
+                  .container-fluid
+                    .awemenu-megamenu-wrapper
+                      .row
+                        .col-lg-3
+                          %h2.upper Brand
+                        .col-lg-3
+                          %ul.sublist
+                            %li
+                              %a{:href => "#", :title => ""} Dr.Matten
+                            %li
+                              %a{:href => "#", :title => ""} The Police
+                            %li
+                              %a{:href => "#", :title => ""} Adidas
+                            %li
+                              %a{:href => "#", :title => ""} Like
+                            %li
+                              %a{:href => "#", :title => ""} The Sandiago
+                            %li
+                              %a{:href => "#", :title => ""} Pollo
+                        .col-lg-3
+                          .sublist
+                            %p Brand
+                            %ul.numbers-list
+                              %li
+                                %a{:href => "#", :title => ""} A
+                              %li
+                                %a{:href => "#", :title => ""} B
+                              %li
+                                %a{:href => "#", :title => ""} C
+                              %li
+                                %a{:href => "#", :title => ""} D
+                              %li
+                                %a{:href => "#", :title => ""} E
+                              %li
+                                %a{:href => "#", :title => ""} F
+                              %li
+                                %a{:href => "#", :title => ""} G
+                              %li
+                                %a{:href => "#", :title => ""} H
+                              %li
+                                %a{:href => "#", :title => ""} I
+                              %li
+                                %a{:href => "#", :title => ""} J
+                              %li
+                                %a{:href => "#", :title => ""} K
+                              %li
+                                %a{:href => "#", :title => ""} L
+                              %li
+                                %a{:href => "#", :title => ""} M
+                              %li
+                                %a{:href => "#", :title => ""} N
+                              %li
+                                %a{:href => "#", :title => ""} O
+                              %li
+                                %a{:href => "#", :title => ""} P
+                              %li
+                                %a{:href => "#", :title => ""} Q
+                              %li
+                                %a{:href => "#", :title => ""} R
+                              %li
+                                %a{:href => "#", :title => ""} S
+                              %li
+                                %a{:href => "#", :title => ""} T
+                              %li
+                                %a{:href => "#", :title => ""} U
+                              %li
+                                %a{:href => "#", :title => ""} V
+                              %li
+                                %a{:href => "#", :title => ""} W
+                              %li
+                                %a{:href => "#", :title => ""} X
+                              %li
+                                %a{:href => "#", :title => ""} Y
+                              %li
+                                %a{:href => "#", :title => ""} Z
+                        .col-lg-3
+                          .awe-media.inline.margin-bottom-25
+                            .awe-media-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/menu/horosen-shop.jpg"}
+                            %h4.awe-media-title.medium.upper.center
+                              %a{:href => "#", :title => ""} Horosen shop
+                          .awe-media.inline
+                            .awe-media-image
+                              %a{:href => "#", :title => ""}
+                                %img{:alt => "", :src => "./img/samples/menu/police-shop.jpg"}
+                            %h4.awe-media-title.medium.upper.center
+                              %a{:href => "#", :title => ""} The police shop
+                      .bottom-link
+                        %a.btn.btn-lg.btn-dark.btn-outline{:href => "#"}
+                          %span Shop All Accessories
+            %li.awemenu-item
+              %a{:href => "#", :title => ""} Pages
+              %ul.awemenu-submenu.awemenu-megamenu{"data-animation" => "fadeup", "data-width" => "100%"}
+                %li.awemenu-megamenu-item
+                  .container-fluid
+                    .row
+                      .col-lg-3
+                        %ul.list-unstyled
+                          %li.awemenu-item
+                            %a{:href => "index.html", :title => ""} Home Page
+                          %li.awemenu-item
+                            %a{:href => "index2.html", :title => ""} Home Page 2
+                          %li.awemenu-item
+                            %a{:href => "index3.html", :title => ""} Home Page 3
+                          %li.awemenu-item
+                            %a{:href => "index4.html", :title => ""} Home Page 4
+                          %li.awemenu-item
+                            %a{:href => "index-header-1.html", :title => ""} Home with header style 1
+                          %li.awemenu-item
+                            %a{:href => "index-header-2.html", :title => ""} Home with header style 2
+                          %li.awemenu-item
+                            %a{:href => "index-header-3.html", :title => ""} Home with header style 3
+                          %li.awemenu-item
+                            %a{:href => "index-header-4.html", :title => ""} Home with header style 4
+                      .col-lg-3
+                        %ul.list-unstyled
+                          %li.awemenu-item
+                            %a{:href => "index-empty.html", :title => ""} Home with empty cart
+                          %li.awemenu-item
+                            %a{:href => "index-footer-style.html", :title => ""} Home with footer style
+                          %li.awemenu-item
+                            %a{:href => "about-us.html", :title => ""} About us
+                          %li.awemenu-item
+                            %a{:href => "blog-left.html", :title => ""} Blog left
+                          %li.awemenu-item
+                            %a{:href => "blog-right.html", :title => ""} Blog right
+                          %li.awemenu-item
+                            %a{:href => "blog-nobar.html", :title => ""} Blog nobar
+                          %li.awemenu-item
+                            %a{:href => "blog-masonry.html", :title => ""} Blog masonry
+                          %li.awemenu-item
+                            %a{:href => "blog-detail.html", :title => ""} Blog details
+                      .col-lg-3
+                        %ul.list-unstyled
+                          %li.awemenu-item
+                            %a{:href => "404.html", :title => ""} 404
+                          %li.awemenu-item
+                            %a{:href => "comming-soon.html", :title => ""} Comming soon
+                          %li.awemenu-item
+                            %a{:href => "contact.html", :title => ""} Contact
+                          %li.awemenu-item
+                            %a{:href => "portfolio-main-style1.html", :title => ""} Portfolio 1
+                          %li.awemenu-item
+                            %a{:href => "portfolio-main-style2.html", :title => ""} Portfolio 2
+                          %li.awemenu-item
+                            %a{:href => "portfolio-main-stylepicture-grid.html", :title => ""} Portfolio 3
+                          %li.awemenu-item
+                            %a{:href => "portfolio-main-stylepicture-masonry.html", :title => ""} Portfolio 4
+                          %li.awemenu-item
+                            %a{:href => "portfolio-detail.html", :title => ""} Portfolio details
+                      .col-lg-3
+                        %ul.list-unstyled
+                          %li.awemenu-item
+                            %a{:href => "customers-say.html", :title => ""} Customers Say
+                          %li.awemenu-item
+                            %a{:href => "lookbook.html", :title => ""} Lookbook
+                          %li.awemenu-item
+                            %a{:href => "lookbook-details.html", :title => ""} Lookbook details
+                          %li.awemenu-item
+                            %a{:href => "products-grid.html", :title => ""} Product grid
+                          %li.awemenu-item
+                            %a{:href => "products-list.html", :title => ""} Product list
+                          %li.awemenu-item
+                            %a{:href => "product-detail.html", :title => ""} Product detail
+                          %li.awemenu-item
+                            %a{:href => "product-fullwidth.html", :title => ""} Product detail 2
+                          %li.awemenu-item
+                            %a{:href => "checkout.html", :title => ""} Checkout
+            %li.awemenu-item
+              %a{:href => "#"} Elements
+              %ul.awemenu-submenu.awemenu-megamenu{"data-animation" => "fadeup", "data-width" => "650px"}
+                %li.awemenu-megamenu-item
+                  .container-fluid
+                    .row
+                      .col-lg-6
+                        %ul.list-unstyled
+                          %li.awemenu-item
+                            %a{:href => "./elements-alert.html"} Alert
+                          %li.awemenu-item
+                            %a{:href => "./elements-background.html"} Background
+                          %li.awemenu-item
+                            %a{:href => "./elements-bar.html"} Bar (Progress)
+                          %li.awemenu-item
+                            %a{:href => "./elements-box.html"} Box
+                          %li.awemenu-item
+                            %a{:href => "./elements-buttons.html"} Buttons
+                          %li.awemenu-item
+                            %a{:href => "./elements-forms.html"} Form Fields
+                          %li.awemenu-item
+                            %a{:href => "./elements-grid.html"} Grid
+                          %li.awemenu-item
+                            %a{:href => "./elements-page-title.html"} Page Title
+                          %li.awemenu-item
+                            %a{:href => "./elements-maps.html"} Maps
+                      .col-lg-6
+                        %ul.list-unstyled
+                          %li.awemenu-item
+                            %a{:href => "./elements-aweicon.html"} Icons (Aweicon)
+                          %li.awemenu-item
+                            %a{:href => "./elements-glyphicon.html"} Icons (Glyphicon)
+                          %li.awemenu-item
+                            %a{:href => "./elements-fontawesome.html"} Icons (FontAwesome)
+                          %li.awemenu-item
+                            %a{:href => "./elements-carousel.html"} Carousel
+                          %li.awemenu-item
+                            %a{:href => "./elements-tabs.html"} Tabs
+                          %li.awemenu-item
+                            %a{:href => "./elements-typography.html"} Typography
+                          %li.awemenu-item
+                            %a{:href => "./elements-video-sound.html"} Video / Sound
+                          %li.awemenu-item
+                            %a{:href => "./elements-divider.html"} Divider
+                          %li.awemenu-item
+                            %a{:href => "./elements-counter.html"} Counter
+          / /.awemenu
+      / /.container
+    / /.awe-menubar
+  / /.awe-menubar-header

@@ -1,0 +1,14 @@
+%h1
+	Admin::Products#index
+%p Find me in app/views/admin/products/index.html.erb
+
+%p 
+	Все продукты
+%p
+	-@products.each do |product|
+		=product.name
+		%br
+		=link_to "Редактировать", edit_admin_product_path(product)
+
+%p
+	=link_to "Создать новый продукт", new_admin_product_path

@@ -1,0 +1,118 @@
+.footer-copyright
+  .container
+    .copyright
+      %p Copyright &copy; 2015 Hosoren - All Rights Reserved.
+    .footer-nav
+      %nav
+        %ul
+          %li
+            %a{:href => "#", :title => ""} Contact Us
+          %li
+            %a{:href => "#", :title => ""} Term of Use
+          %li
+            %a{:href => "#", :title => ""} Privacy Policy
+          %li
+            %a{:href => "#", :title => ""} Site Map
+      %nav
+        %ul
+          %li.dropdown.dropup
+            .language-select
+              %span.select-title Language:
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                %span ENG
+                %span.icon.icon-arrow-down
+              %ul.dropdown-menu{:role => "menu"}
+                %li
+                  %a{:href => "#"} English
+                %li
+                  %a{:href => "#"} Vietnamese
+          %li.dropdown.dropup
+            .price-select
+              %span.select-title Price:
+              %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+                %span USD
+                %span.icon.icon-arrow-down
+              %ul.dropdown-menu{:role => "menu"}
+                %li
+                  %a{:href => "#"} USD
+                %li
+                  %a{:href => "#"} VND
+/ /.footer-copyright
+/ /.footer-wrapper
+%a.back-top{:href => "#", :title => ""}
+  %span.back-top-image
+    %img{:alt => "", :src => "./img/back-top.png"}
+  %small Back top top
+/ /.back-top
+/ /footer
+/ /#wrapper
+#login-popup.white-popup.login-popup.mfp-hide
+  %div{:role => "tabpanel"}
+    / Nav tabs
+    %ul.nav.nav-tabs{:role => "tablist"}
+      %li.active{:role => "presentation"}
+        %a{"aria-controls" => "account-login", "data-toggle" => "tab", :href => "#account-login", :role => "tab"} Account Login
+      %li{:role => "presentation"}
+        %a{"aria-controls" => "account-register", "data-toggle" => "tab", :href => "#account-register", :role => "tab"} Register
+    / /.nav
+    / Tab panes
+    .tab-content
+      #account-login.tab-pane.active{:role => "tabpanel"}
+        %form{:action => "index.html", :method => "POST"}
+          .form-group
+            %label{:for => "login-account"} Account
+            %input#login-account.form-control{:type => "text"}
+          / /.form-group
+          .form-group
+            %label{:for => "login-password"} Password
+            %input#login-password.form-control{"data-show-password" => "true", :type => "password"}
+          / /.form-group
+          .forgot-passwd
+            %a{:href => "#", :title => ""}
+              %i.icon.icon-key
+              %span Forgot your password?
+          / /.forgot-passwd
+          .form-button
+            %button.btn.btn-lg.btn-primary.btn-block{:type => "submit"} Login
+          / /.form-group
+      / /.tab-pane
+      #account-register.tab-pane{:role => "tabpanel"}
+        %form{:action => "index.html", :method => "POST"}
+          .form-group
+            %label{:for => "register-username"}
+              Username
+              %sup *
+            %input#register-username.form-control{:type => "text"}
+          / /.form-group
+          .form-group
+            %label{:for => "register-email"}
+              Email
+              %sup *
+            %input#register-email.form-control{:type => "text"}
+          / /.form-group
+          .form-group
+            %label{:for => "register-password"}
+              Password
+              %sup *
+            %input#register-password.form-control{:type => "password"}
+          / /.form-group
+          .form-group
+            %label{:for => "register-confirm-password"}
+              Confirm Password
+              %sup *
+            %input#register-confirm-password.form-control{:type => "password"}
+          / /.form-group
+          .form-button
+            %button.btn.btn-lg.btn-warning.btn-block{:type => "submit"} Register
+          / /.form-button
+      / /.tab-pane
+    / /.tab-content
+/ /.login-popup
+:javascript
+  $(function() {
+      $('a[href="#login-popup"]').magnificPopup({
+          type:'inline',
+          midClick: false,
+          closeOnBgClick: false
+      });
+  });
