@@ -1,0 +1,11 @@
+.nested-fields
+	=f.label "Цена товара с данной опцией"
+	=f.number_field :price, step: :any
+	%br
+	=f.label "Мощность"
+	-Power.all.order(value: :asc).each do |volume|
+		=f.label volume.value
+		=f.radio_button :power, volume.value
+	%br
+	=f.label 'Удалить?'
+	=f.check_box :_destroy

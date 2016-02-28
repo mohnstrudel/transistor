@@ -1,10 +1,10 @@
 @font-face {
     font-family: 'aweicon';
-    src:url('../fonts/aweicon.eot?-t5ttdb');
-    src:url('../fonts/aweicon.eot?#iefix-t5ttdb') format('embedded-opentype'),
-        url('../fonts/aweicon.ttf?-t5ttdb') format('truetype'),
-        url('../fonts/aweicon.woff?-t5ttdb') format('woff'),
-        url('../fonts/aweicon.svg?-t5ttdb#aweicon') format('svg');
+    src: url('/assets/aweicon.eot?-t5ttdb');
+    src: url('/assets/aweicon.eot?#iefix-t5ttdb') format('embedded-opentype'),
+        url('/assets/aweicon.ttf?-t5ttdb') format('truetype'),
+        url('/assets/aweicon.woff?-t5ttdb') format('woff'),
+        url('/assets/aweicon.svg?-t5ttdb#aweicon') format('svg');
     font-weight: normal;
     font-style: normal;
 }

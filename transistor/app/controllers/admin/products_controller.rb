@@ -13,6 +13,7 @@ class Admin::ProductsController < ApplicationController
 
   def new
   	@product = Product.new
+    @product.options.build
   end
 
   def update
@@ -40,6 +41,7 @@ class Admin::ProductsController < ApplicationController
   end
 
   def product_params
-  	params.require(:product).permit(:name, :description, :intro_text, :sku)
+  	params.require(:product).permit(:name, :description, :intro_text, :sku, :category_id,
+      options_attributes: [:id, :power, :price, :product_id, :_destroy])
   end
 end

@@ -1,15 +1,30 @@
-=form_for([:admin, @product]) do |f|
-	%p
-		=f.label 'Наименование товара'
-		=f.text_field :name
-	%p
-		=f.label 'Вступительный текст'
-		=f.text_area :intro_text
-	%p
-		=f.label 'Описание товара'
-		=f.text_area :description
-	%p
-		=f.label 'Артикул (если оставить пустым будет браться просто ID товара'
-		=f.number_field :sku
-	%p
-		=f.submit 'Сохранить'
+.row
+	.col-md-1
+	.col-md-8
+		.box
+			=form_for([:admin, @product], html: { multipart: true }) do |f|
+				%p
+					=f.label "Выбрать категорию товара"
+					=f.collection_select :category_id, Category.all, :id, :name, { prompt: 'Выбрать категорию' }, class: 'form-control'
+				%p
+					=f.label 'Наименование товара'
+					=f.text_field :name, class: 'form-control'
+				%p
+					=f.label 'Вступительный текст'
+					=f.text_area :intro_text, class: 'form-control'
+				%p
+					=f.label 'Описание товара'
+					=f.text_area :description, class: 'form-control'
+				%p
+					=f.label 'Артикул (если оставить пустым будет браться просто ID товара'
+					=f.number_field :sku, class: 'form-control'
+
+				%p
+					%h3 Опции
+					=f.fields_for :options do |builder|
+						=render 'option_fields', f: builder
+						%br
+					=link_to_add_fields 'Добавить опцию', f, :options
+				%p
+					=f.submit 'Сохранить'
+	.col-md-3

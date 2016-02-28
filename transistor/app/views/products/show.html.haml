@@ -1,11 +1,12 @@
 .main-header.background.background-image-heading-product
   .container
-    %h1 Product
+    %h1
+      =@product.category.name
 #breadcrumb
   .container
     %ol.breadcrumb
       %li
-        %a{:href => "#"} Home
+        =link_to 'Главная', root_path
       %li.active
         %span Product
 .container
@@ -84,7 +85,7 @@
       / /header
       .product-details-wrapper
         %h2.product-name
-          %a{:href => "#", :title => " Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
+          =link_to @product.name, '#', title: @product.name
         / /.product-name
         .product-status
           %span In Stock
@@ -100,14 +101,24 @@
             %span
         / /.product-stars
         .product-description
-          %p There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
+          %p
+            =@product.intro_text
         / /.product-description
         .product-features
-          %h3 Special Features:
-          %ul
-            %li 1914 translation by H. Rackham
-            %li The standard Lorem Ipsum passage, used since the 1500s
-            %li Section 1.10.33 of "de Finibus Bonorum et Malorum
+          #product-infomation.tab-pane{:role => "tabpanel"}
+            %ul
+              %li
+                %span Weight
+                %span.value 8.6kg
+              %li
+                %span Color
+                %span.value Yellow, Brown
+              %li
+                %span Size
+                %span.value S, M, L, XL, XXL
+              %li
+                %span Material
+                %span.value Nylon, Coton
         / /.product-features
         .product-actions-wrapper
           %form{:action => "product-quick-view.html", :method => "POST"}
@@ -171,19 +182,19 @@
       %nav
         %ul.nav{:role => "tablist"}
           %li.active{:role => "presentation"}
-            %a{"data-toggle" => "tab", :href => "#product-description"} Description
+            %a{"data-toggle" => "tab", :href => "#product-description"} Описание
           %li{:role => "presentation"}
             %a{"data-toggle" => "tab", :href => "#product-infomation"} Additional Infomation
           %li{:role => "presentation"}
             %a{"data-toggle" => "tab", :href => "#product-review"}
-              Review
+              Отзывы
               %span (2)
         / /.nav
       / /nav
       .tab-content
         #product-description.tab-pane.active{:role => "tabpanel"}
-          %p Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-          %p It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+          %p
+            =@product.description
         / /.tab-pane
         #product-infomation.tab-pane{:role => "tabpanel"}
           %ul

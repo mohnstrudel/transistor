@@ -11,10 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160227132325) do
+ActiveRecord::Schema.define(version: 20160228110538) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.float    "price"
+    t.float    "power"
+    t.integer  "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "options", ["product_id"], name: "index_options_on_product_id", using: :btree
+
+  create_table "powers", force: :cascade do |t|
+    t.integer  "value"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string   "name"
@@ -23,6 +45,8 @@ ActiveRecord::Schema.define(version: 20160227132325) do
     t.text     "intro_text"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "category_id"
   end
 
+  add_foreign_key "options", "products"
 end
