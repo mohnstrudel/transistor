@@ -1,0 +1,33 @@
+%h1 Админская панель
+.row
+	.col-md-1
+	.col-md-8
+		.box 
+			%h4 Товары
+			%h5 Последние 5 созданных
+			=render 'shared/listing'
+
+			%h6 Действия
+			=link_to 'Создать новый товар', new_admin_product_path
+			=link_to 'Просмотреть все товары', admin_products_path
+
+		.box
+			%h4 Категории
+			%h5 Последние 5 созданных
+			=render 'shared/listing_cats'
+
+			%h6 Действия
+			=link_to 'Создать новую категорию', new_admin_category_path
+			=link_to 'Просмотреть все категории', admin_categories_path
+
+
+		.box
+			%h4 Мощности
+			%h5 Последние мощности
+			=render 'shared/listing_powers'
+
+			%h6 Действия
+			=link_to 'Создать новую мощность', new_admin_power_path
+			=link_to 'Просмотреть все мощности', admin_powers_path
+	.col-md-3
+

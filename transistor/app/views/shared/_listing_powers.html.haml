@@ -1,0 +1,5 @@
+-@powers.each do |volume|
+	%p
+		=volume.value
+		=link_to 'Редактировать', edit_admin_power_path(volume)
+		=link_to 'Удалить', admin_power_path(volume), method: :delete, data: {confirm: 'Уверен?'}

@@ -8,45 +8,19 @@
       %li
         =link_to 'Главная', root_path
       %li.active
-        %span Product
+        %span
+          =@product.category.name
 .container
   .row
     .col-md-6
       .product-slider-wrapper.thumbs-bottom
         .swiper-container.product-slider-main
           .swiper-wrapper
-            .swiper-slide
-              .easyzoom.easyzoom--overlay
-                %a{:href => "./img/samples/products/product/large/product-1.jpg", :title => ""}
-                  %img{:alt => "", :src => "./img/samples/products/product/large/product-1.jpg"}
-            .swiper-slide
-              .easyzoom.easyzoom--overlay
-                %a{:href => "./img/samples/products/product/large/product-1.jpg", :title => ""}
-                  %img{:alt => "", :src => "./img/samples/products/product/large/product-1.jpg"}
-            .swiper-slide
-              .easyzoom.easyzoom--overlay
-                %a{:href => "./img/samples/products/product/large/product-1.jpg", :title => ""}
-                  %img{:alt => "", :src => "./img/samples/products/product/large/product-1.jpg"}
-            .swiper-slide
-              .easyzoom.easyzoom--overlay
-                %a{:href => "./img/samples/products/product/large/product-1.jpg", :title => ""}
-                  %img{:alt => "", :src => "./img/samples/products/product/large/product-1.jpg"}
-            .swiper-slide
-              .easyzoom.easyzoom--overlay
-                %a{:href => "./img/samples/products/product/large/product-1.jpg", :title => ""}
-                  %img{:alt => "", :src => "./img/samples/products/product/large/product-1.jpg"}
-            .swiper-slide
-              .easyzoom.easyzoom--overlay
-                %a{:href => "./img/samples/products/product/large/product-1.jpg", :title => ""}
-                  %img{:alt => "", :src => "./img/samples/products/product/large/product-1.jpg"}
-            .swiper-slide
-              .easyzoom.easyzoom--overlay
-                %a{:href => "./img/samples/products/product/large/product-1.jpg", :title => ""}
-                  %img{:alt => "", :src => "./img/samples/products/product/large/product-1.jpg"}
-            .swiper-slide
-              .easyzoom.easyzoom--overlay
-                %a{:href => "./img/samples/products/product/large/product-1.jpg", :title => ""}
-                  %img{:alt => "", :src => "./img/samples/products/product/large/product-1.jpg"}
+            -@product.images.each do |pic|
+              .swiper-slide
+                .easyzoom.easyzoom--overlay
+                  =link_to pic.image.url, title: pic.image.url do
+                    =image_tag pic.image.url
           .swiper-button-prev
             %i.fa.fa-chevron-left
           .swiper-button-next
@@ -54,22 +28,9 @@
         / /.swiper-container
         .swiper-container.product-slider-thumbs
           .swiper-wrapper
-            .swiper-slide
-              %img{:alt => "", :src => "./img/samples/products/product/tiny/thumb-1.jpg"}
-            .swiper-slide
-              %img{:alt => "", :src => "./img/samples/products/product/tiny/thumb-2.jpg"}
-            .swiper-slide
-              %img{:alt => "", :src => "./img/samples/products/product/tiny/thumb-3.jpg"}
-            .swiper-slide
-              %img{:alt => "", :src => "./img/samples/products/product/tiny/thumb-4.jpg"}
-            .swiper-slide
-              %img{:alt => "", :src => "./img/samples/products/product/tiny/thumb-1.jpg"}
-            .swiper-slide
-              %img{:alt => "", :src => "./img/samples/products/product/tiny/thumb-2.jpg"}
-            .swiper-slide
-              %img{:alt => "", :src => "./img/samples/products/product/tiny/thumb-3.jpg"}
-            .swiper-slide
-              %img{:alt => "", :src => "./img/samples/products/product/tiny/thumb-4.jpg"}
+            -@product.images.each do |pic|
+              .swiper-slide
+                =image_tag pic.image.url(:thumb_small)
         / /.swiper-container
       / /.product-slider-wrapper
     .col-md-6
@@ -79,9 +40,9 @@
             %i.fa.fa-chevron-left
           %a.btn.btn-sm.btn-arrow.btn-default{:href => "#"}
             %i.fa.fa-chevron-right
-        %a.back-to-pcate{:href => "#"}
+        =link_to products_path, class: "back-to-pcate" do
           %i.fa.fa-chevron-left
-          %span Back to Portfolio
+          %span Назад
       / /header
       .product-details-wrapper
         %h2.product-name
@@ -108,54 +69,47 @@
           #product-infomation.tab-pane{:role => "tabpanel"}
             %ul
               %li
-                %span Weight
-                %span.value 8.6kg
+                %span Напряжение
+                %span.value
+                  =@product.voltage
+                  В
               %li
-                %span Color
-                %span.value Yellow, Brown
+                %span Ток (сила)
+                %span.value
+                  =@product.electric_current
+                  А
               %li
-                %span Size
-                %span.value S, M, L, XL, XXL
-              %li
-                %span Material
-                %span.value Nylon, Coton
+                %span Доступные мощности
+                %span.value
+                  -@product.options.each do |option|
+                    =sprintf("%.0f", option.power)
+                    ="," unless option == @product.options.last
         / /.product-features
         .product-actions-wrapper
           %form{:action => "product-quick-view.html", :method => "POST"}
             .row
-              .col-md-4
+              .col-md-12
                 .form-group
-                  %label{:for => "p_color"} Color
-                  %select#p_color.form-control{:name => "p_color"}
-                    %option{:value => ""} Blue
-              .col-md-4
-                .form-group
-                  %label{:for => "p_size"} Size
-                  %select#p_size.form-control{:name => "p_size"}
-                    %option{:value => ""} XL
-              .col-md-3
-                .form-group
-                  %label{:for => "p_qty"} Qty
-                  %select#p_qty.form-control{:name => "p_qty"}
-                    %option{:value => ""} 1
-                    %option{:value => ""} 2
-                    %option{:value => ""} 3
+                  %label{:for => "p_color"} Выберите необходимую мощность
+                  =select_tag "voltage", options_from_collection_for_select(@product.options, "price", "power"), id: 'select_voltage', class: 'form-control'
           / /.form
           .product-list-actions
             %span.product-price
-              %span.amount $60
-              %del.amount $120
-            / /.product-price
-            %button.btn.btn-lg.btn-primary Add to cart
+              %span.amount#priceValue
+                60
+              ="\u20BD".encode('utf-8')
+              / %del.amount 
+              /   $120
+            %button.btn.btn-lg.btn-primary В корзину
           / /.product-list-actions
         / /.product-actions-wrapper
         .product-meta
           %span.product-category
-            %span Category:
-            %a{:href => "#", :title => ""} Outerwear
+            %span Категория:
+            =link_to @product.category.name, "#"
           %span -
           %span.product-tags
-            %span Tags:
+            %span Тэги:
             %a{:href => "#", :title => ""} Jacket
         / /.product-meta
       / /.product-details-wrapper
@@ -183,119 +137,15 @@
         %ul.nav{:role => "tablist"}
           %li.active{:role => "presentation"}
             %a{"data-toggle" => "tab", :href => "#product-description"} Описание
-          %li{:role => "presentation"}
-            %a{"data-toggle" => "tab", :href => "#product-infomation"} Additional Infomation
-          %li{:role => "presentation"}
-            %a{"data-toggle" => "tab", :href => "#product-review"}
-              Отзывы
-              %span (2)
         / /.nav
       / /nav
       .tab-content
         #product-description.tab-pane.active{:role => "tabpanel"}
           %p
             =@product.description
-        / /.tab-pane
-        #product-infomation.tab-pane{:role => "tabpanel"}
-          %ul
-            %li
-              %span Weight
-              %span.value 8.6kg
-            %li
-              %span Color
-              %span.value Yellow, Brown
-            %li
-              %span Size
-              %span.value S, M, L, XL, XXL
-            %li
-              %span Material
-              %span.value Nylon, Coton
-        / /.tab-pane
-        #product-review.tab-pane{:role => "tabpanel"}
-          %h3
-            Review
-            %span (2)
-          %ol.product-review-list
-            %li
-              %h4.review-title Goodale Rutledge Navy/White
-              .rating.small
-                %span.star
-                %span.star
-                %span.star
-                %span.star
-                %span.star
-              .review-comment
-                %p There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.
-              .review-meta
-                %span Posted by
-                %a.author{:href => "#"} Join Doe
-                %span -
-                %span February 17, 2015
-            %li
-              %h4.review-title The standard Lorem Ipsum passage, used since the 1500s
-              .rating.small
-                %span.star
-                %span.star
-                %span.star
-                %span.star
-                %span.star
-              .review-comment
-                %p Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-              .review-meta
-                %span Posted by
-                %a.author{:href => "#"} Join Doe
-                %span -
-                %span February 17, 2015
-          / /.product-review-list
-          %h3 Add a review
-          %form{:action => "product-fullwidth.html", :method => "POST"}
-            .row
-              .col-md-6
-                .form-group
-                  %label{:for => "reply-name"}
-                    Name
-                    %sup *
-                  %input#reply-name.form-control{:placeholder => "Name", :type => "text"}
-                / /.form-group
-              .col-md-6
-                .form-group
-                  %label{:for => "reply-email"}
-                    Email
-                    %sup *
-                  %input#reply-email.form-control{:placeholder => "Email", :type => "email"}
-                / /.form-group
-            .form-group
-              %label{:for => "reply-title"}
-                Title
-                %sup *
-              %input#reply-title.form-control{:placeholder => "title", :type => "text"}
-            / /.form-group
-            .form-group
-              %label{:for => "reply-text"}
-                Your review
-                %sup *
-              %textarea#reply-text.form-control{:name => "reply-text", :placeholder => "Your review", :rows => "7"}
-            / /.form-group
-            .form-submit.clearfix
-              .review-rating
-                %span.title Your rating:
-                %span.rating.small.live
-                  %span
-                  %span
-                  %span
-                  %span
-                  %span
-              .pull-right
-                %button.submit.btn.btn-lg.btn-default{:type => "submit"} Submit
-            / /.form-submit
-          / /form
-        / /.tab-pane
-      / /.tab-pane
-    / /.tab-content
-  / /.product-details-left
   .relared-products
     .relared-products-header.margin-bottom-50
-      %h3.upper Related Products
+      %h3.upper Товары, которые вас могут заинтересовать
     .products.owl-carousel{"data-items" => "4"}
       .product.product-grid
         .product-media

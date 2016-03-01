@@ -1,6 +1,21 @@
 =form_for([:admin, @category]) do |f|
 	%p
+		%hr
+			%h3 Раздел: Основное
+	%p
 		=f.label 'Наименование категории'
 		=f.text_field :name
+	%p
+		=f.label 'Описание категории'
+		=f.text_area :description
+	%p
+		%hr
+			%h3 Раздел: фотографии
+			=f.file_field :vertical_image, id: 'fileupload', type: :file
+
+			- if @category.vertical_image.url
+				=image_tag @category.vertical_image.url, width: 120
+				=f.check_box :remove_vertical_image
+				=f.label :remove_vertical_image, 'Удалить?'
 	%p
 		=f.submit 'Сохранить'

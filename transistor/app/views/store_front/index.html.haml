@@ -1,0 +1,510 @@
+%section
+  .main-slider-wrapper
+    .main-slider.owl-carousel.owl-carousel-inset
+      -@hotproducts.each do |hotproduct|
+        .main-slider-item
+          .main-slider-image
+            =image_tag hotproduct.main_slider_image.url(:horizontal_thumb)
+          .main-slider-text
+            .fp-table
+              .fp-table-cell.center
+                .container
+                  %h3
+                    =hotproduct.advertising_main_slider
+                  %h2
+                    =hotproduct.name
+                    %br
+                      от
+                      =hotproduct.options.first.price
+                      ="\u20BD".encode('utf-8')
+                  .button
+                    =link_to "Купить сейчас", hotproduct, class: "btn btn-lg btn-primary margin-right-15"
+                    =link_to "Похожие товары", '#', class: "btn btn-lg btn-white btn-outline"
+  :javascript
+    $(function() {  aweMainSlider(); });
+    / /section
+%section.border-bottom
+  .container
+    .policy-wrapper
+      .row
+        .col-md-4.col-sm-4.col-xs-8
+          .policy
+            .policy-icon
+              %i.icon.icon-dolar-circle
+            .policy-text
+              %h4 100% возвращаем деньги
+              %p если не понравился товар
+          / /.policy
+        .col-md-4.col-sm-4.col-xs-8
+          .policy
+            .policy-icon
+              %i.icon.icon-car
+            .policy-text
+              %h4 Бесплатная доставка
+              %p 
+                ="При заказе от 5000 #{"\u20BD".encode('utf-8')}"
+          / /.policy
+        .col-md-4.col-sm-4.col-xs-8
+          .policy
+            .policy-icon
+              %i.icon.icon-telephone
+            .policy-text
+              %h4 24/7
+              %p служба техподдержки
+          / /.policy
+      / /.row
+    / /.policy-wrapper
+  / /.container
+/ /section
+%section
+  .container
+    .home-products.padding-vertical-60
+      -@categories.each_with_index do |category, index|
+        .row
+          =style_first_div(index) do
+            .awe-media.home-cate-media
+              .awe-media-header
+                .awe-media-image
+                  =image_tag category.vertical_image.url(:vertical_thumb)
+                / /.awe-media-image
+                .awe-media-overlay.overlay-dark-50.fullpage
+                  .content
+                    .fp-table.text-left
+                      .fp-table-cell
+                        %h2.upper
+                          =category.name
+                        %p.margin-bottom-50
+                          =category.description
+                        %a.btn.btn-sm.btn-outline.btn-white{:href => "#"} Все товары
+                / /.awe-media-overlay
+              / /.awe-media-header
+            / /.awe-media
+          =style_second_div(index) do
+            .products.owl-carousel{"data-items" => "3"}
+              -category.products.each do |product|
+                .product.product-grid
+                  .product-media
+                    .product-thumbnail
+                      =link_to product do
+                        =image_tag product.images.first.image.url, class: 'current'
+                        =image_tag product.images.second.image.url
+                    .product-hover
+                      .product-actions
+                        %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
+                          %i.icon.icon-shopping-bag
+                        %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
+                          %i.icon.icon-star
+                        %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
+                          %i.icon.icon-eye
+                    / /.product-hover
+                  / /.product-media
+                  .product-body
+                    %h2.product-name
+                      =link_to product.name, product, title: product.name
+                    / /.product-product
+                    .product-category
+                      %span Short
+                    / /.product-category
+                    .product-price
+                      %span.amount
+                        от
+                        =product.options.first.price
+                        ="\u20BD".encode('utf-8')
+                    / /.product-price
+                  / /.product-body
+                / /.product
+.container
+  .divider
+%section
+  .container
+    .padding-vertical-50
+      .arrivals
+        .section-header.center
+          %h2 Новые поступления
+        / /.section-header
+        .products.home-products.owl-carousel{"data-items" => "4"}
+          -@latest_products.each do |product|
+            .product.product-grid
+              .product-media
+                .product-thumbnail
+                  =link_to product do
+                    =image_tag product.images.first.image.url, class: 'current'
+                    =image_tag product.images.second.image.url
+                / /.product-thumbnail
+                .product-hover
+                  .product-actions
+                    %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
+                      %i.icon.icon-shopping-bag
+                    %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
+                      %i.icon.icon-star
+                    %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
+                      %i.icon.icon-eye
+                / /.product-hover
+              / /.product-media
+              .product-body
+                %h2.product-name
+                  =link_to product.name, product, title: product.name
+                / /.product-product
+                .product-category
+                  %span
+                    =product.category.name
+                / /.product-category
+                .product-price
+                  %span.amount
+                    от
+                    =product.options.first.price
+                    ="\u20BD".encode('utf-8')
+                / /.product-price
+              / /.product-body
+      / /.arrivals
+  / /.container
+/ /section
+
+.container
+  .divider
+%section
+  .container
+    .home-trending.padding-vertical-50
+      .section-header.center
+        %h2.upper.margin-bottom-20 Полезные статьи
+        %p Для лучшего оборудования
+      / ./section-header
+      .row
+        .col-md-3.col-sm-6.col-xs-6
+          .awe-media
+            .awe-media-image
+              %a{:href => "#", :title => "New Collection For Man"}
+                %img{:alt => "", :src => "./img/samples/collections/trending/1.jpg"}
+            / /.awe-media-image
+            .awe-media-body.center.margin-vertical-20
+              %a{:href => "#", :title => "New Collection For Man"} New Collection For Man
+            / /.awe-media-body
+          / /.awe-media
+        .col-md-3.col-sm-6.col-xs-6
+          .awe-media
+            .awe-media-image
+              %a{:href => "#", :title => "New Trending Shop"}
+                %img{:alt => "", :src => "./img/samples/collections/trending/2.jpg"}
+            / /.awe-media-image
+            .awe-media-body.center.margin-vertical-20
+              %a{:href => "#", :title => "New Trending Shop"} New Trending Shop
+            / /.awe-media-body
+          / /.awe-media
+        .col-md-3.col-sm-6.col-xs-6
+          .awe-media
+            .awe-media-image
+              %a{:href => "#", :title => "New Fashion for Cafe Racer Boy"}
+                %img{:alt => "", :src => "./img/samples/collections/trending/3.jpg"}
+            / /.awe-media-image
+            .awe-media-body.center.margin-vertical-20
+              %a{:href => "#", :title => "New Fashion for Cafe Racer Boy"} New Fashion for Cafe Racer Boy
+            / /.awe-media-body
+          / /.awe-media
+        .col-md-3.col-sm-6.col-xs-6
+          .awe-media
+            .awe-media-image
+              %a{:href => "#", :title => "New Watch Style"}
+                %img{:alt => "", :src => "./img/samples/collections/trending/4.jpg"}
+            / /.awe-media-image
+            .awe-media-body.center.margin-vertical-20
+              %a{:href => "#", :title => "New Watch Style"} New Watch Style
+            / /.awe-media-body
+          / /.awe-media
+      / /.row
+    / /.home-trending
+  / /.container
+/ /section
+
+.container
+  .divider
+%section
+  .container
+    .padding-vertical-50.border-bottom
+      .section-header.center
+        %h2 Featured Items
+      / /.section-header
+      .products.scroll
+        .row
+          .col-md-3.col-sm-6.col-xs-6
+            .product.product-grid
+              .product-media
+                .product-thumbnail
+                  %a{:href => "product-fullwidth.html", :title => ""}
+                    %img.current{:alt => "", :src => "./img/samples/products/index/featured/1.jpg"}
+                      %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
+                / /.product-thumbnail
+                .product-hover
+                  .product-actions
+                    %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
+                      %i.icon.icon-shopping-bag
+                    %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
+                      %i.icon.icon-star
+                    %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
+                      %i.icon.icon-eye
+                / /.product-hover
+                %span.product-label.hot
+                  %span hot
+              / /.product-media
+              .product-body
+                %h2.product-name
+                  %a{:href => "#", :title => "Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
+                / /.product-product
+                .product-category
+                  %span Jackets
+                / /.product-category
+                .product-price
+                  %span.amount $260
+                / /.product-price
+              / /.product-body
+            / /.product
+          .col-md-3.col-sm-6.col-xs-6
+            .product.product-grid
+              .product-media
+                .product-thumbnail
+                  %a{:href => "product-fullwidth.html", :title => ""}
+                    %img.current{:alt => "", :src => "./img/samples/products/index/featured/2.jpg"}
+                      %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
+                / /.product-thumbnail
+                .product-hover
+                  .product-actions
+                    %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
+                      %i.icon.icon-shopping-bag
+                    %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
+                      %i.icon.icon-star
+                    %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
+                      %i.icon.icon-eye
+                / /.product-hover
+                %span.product-label.new
+                  %span new
+              / /.product-media
+              .product-body
+                %h2.product-name
+                  %a{:href => "#", :title => "Goodale Rutledge Navy/White"} Goodale Rutledge Navy/White
+                / /.product-product
+                .product-category
+                  %span Shorts
+                / /.product-category
+                .product-price
+                  %span.amount $150
+                / /.product-price
+              / /.product-body
+            / /.product
+          .col-md-3.col-sm-6.col-xs-6
+            .product.product-grid
+              .product-media
+                .product-thumbnail
+                  %a{:href => "product-fullwidth.html", :title => ""}
+                    %img.current{:alt => "", :src => "./img/samples/products/index/featured/3.jpg"}
+                      %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
+                / /.product-thumbnail
+                .product-soldout
+                  .fp-table
+                    .fp-table-cell
+                      %span.soldout Sold Out
+                / /.product-hover
+              / /.product-media
+              .product-body
+                %h2.product-name
+                  %a{:href => "#", :title => "Gin Lane Greenport Cotton Shirt"} Gin Lane Greenport Cotton Shirt
+                / /.product-product
+                .product-category
+                  %span Shirt
+                / /.product-category
+                .product-price
+                  %span.amount $60
+                / /.product-price
+              / /.product-body
+            / /.product
+          .col-md-3.col-sm-6.col-xs-6
+            .product.product-grid
+              .product-media
+                .product-thumbnail
+                  %a{:href => "product-fullwidth.html", :title => ""}
+                    %img.current{:alt => "", :src => "./img/samples/products/index/featured/4.jpg"}
+                      %img{:alt => "", :src => "./img/samples/products/index/clothing/2.jpg"}
+                / /.product-thumbnail
+                .product-hover
+                  .product-actions
+                    %a.awe-button.product-add-cart{"data-toggle" => "tooltip", :href => "#", :title => "Add to cart"}
+                      %i.icon.icon-shopping-bag
+                    %a.awe-button.product-quick-whistlist{"data-toggle" => "tooltip", :href => "#", :title => "Add to whistlist"}
+                      %i.icon.icon-star
+                    %a.awe-button.product-quick-view{"data-toggle" => "tooltip", :href => "product-quick-view.html", :title => "Quickview"}
+                      %i.icon.icon-eye
+                / /.product-hover
+                %span.product-label.sale
+                  %span sale
+              / /.product-media
+              .product-body
+                %h2.product-name
+                  %a{:href => "#", :title => "Goodale Rutledge Navy/White"} Goodale Rutledge Navy/White
+                / /.product-product
+                .product-category
+                  %span Vests
+                / /.product-category
+                .product-price
+                  %span.amount $630
+                  %del.amount $230
+                / /.product-price
+              / /.product-body
+            / /.product
+        / /.row
+      / /.products
+      .center
+        %a.btn.btn-lg.btn-dark.btn-outline{:href => "#"}
+          %span View More Products
+      / /.margin-top-50
+    / /.padding-vertical-50
+  / /.container
+/ /section
+%section.background.background-color-dark.background-image-section-customers-say
+  .container
+    .padding-top-60
+      .section-header.center
+        %h2 Customer Say
+      / /.section-header
+      .section-customers
+        .row
+          .col-md-8.col-md-offset-2
+            #customers-carousel.customers-carousel.owl-carousel{"data-dots" => "true", "data-nav" => "0", "data-toggle" => "carousel"}
+              .center
+                %h4 Natasha Roson
+                %p “There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum“
+              / /.center
+              .center
+                %h4 Natasha Roson
+                %p “There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum“
+              / /.center
+              .center
+                %h4 Natasha Roson
+                %p “There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum“
+              / /.center
+            / /.customers-say-carousel
+      / /.section-content
+  / /.container
+  .section-brands
+    .container
+      #brands-carousel.brands-carousel.owl-carousel
+        .center
+          %img{:alt => "", :src => "./img/samples/brands/brand-1.png"}
+        / /.center
+        .center
+          %img{:alt => "", :src => "./img/samples/brands/brand-2.png"}
+        / /.center
+        .center
+          %img{:alt => "", :src => "./img/samples/brands/brand-3.png"}
+        / /.center
+        .center
+          %img{:alt => "", :src => "./img/samples/brands/brand-4.png"}
+        / /.center
+        .center
+          %img{:alt => "", :src => "./img/samples/brands/brand-1.png"}
+        / /.center
+        .center
+          %img{:alt => "", :src => "./img/samples/brands/brand-2.png"}
+        / /.center
+        .center
+          %img{:alt => "", :src => "./img/samples/brands/brand-3.png"}
+        / /.center
+        .center
+          %img{:alt => "", :src => "./img/samples/brands/brand-4.png"}
+        / /.center
+      / /.brands-carousel
+    / /.container
+  / /.section-brands
+/ /section
+%section
+  .container
+    .padding-vertical-60
+      .section-header
+        %h2 News
+      .section-content
+        .home-section-posts.owl-carousel
+          .section-post
+            .section-post-media
+              %a{:href => "#", :title => "San Francisco Felt Pennant"}
+                %img{:alt => "", :src => "./img/samples/posts/index/1.jpg"}
+            .section-post-body
+              .section-post-time
+                %span 26
+                %small August
+              %h4.section-post-title
+                %a{:href => "#", :title => "San Francisco Felt Pennant"} San Francisco Felt Pennant
+              %p.section-post-excerpt Lorem Ipsum is simply dummy text of the printing and typeseting industry.
+              %a.read-more{:href => "#", :title => ""} Read more
+          .section-post
+            .section-post-media
+              %a{:href => "#", :title => "San Francisco Felt Pennant"}
+                %img{:alt => "", :src => "./img/samples/posts/index/2.jpg"}
+            .section-post-body
+              .section-post-time
+                %span 18
+                %small August
+              %h4.section-post-title
+                %a{:href => "#", :title => "San Francisco Felt Pennant"} San Francisco Felt Pennant
+              %p.section-post-excerpt Lorem Ipsum is simply dummy text of the printing and typeseting industry.
+              %a.read-more{:href => "#", :title => ""} Read more
+          .section-post
+            .section-post-media
+              %a{:href => "#", :title => "San Francisco Felt Pennant"}
+                %img{:alt => "", :src => "./img/samples/posts/index/1.jpg"}
+            .section-post-body
+              .section-post-time
+                %span 26
+                %small August
+              %h4.section-post-title
+                %a{:href => "#", :title => "San Francisco Felt Pennant"} San Francisco Felt Pennant
+              %p.section-post-excerpt Lorem Ipsum is simply dummy text of the printing and typeseting industry.
+              %a.read-more{:href => "#", :title => ""} Read more
+          .section-post
+            .section-post-media
+              %a{:href => "#", :title => "San Francisco Felt Pennant"}
+                %img{:alt => "", :src => "./img/samples/posts/index/2.jpg"}
+            .section-post-body
+              .section-post-time
+                %span 18
+                %small August
+              %h4.section-post-title
+                %a{:href => "#", :title => "San Francisco Felt Pennant"} San Francisco Felt Pennant
+              %p.section-post-excerpt Lorem Ipsum is simply dummy text of the printing and typeseting industry.
+              %a.read-more{:href => "#", :title => ""} Read more
+  / /.container
+/ /section
+%section
+  .container
+    .margin-bottom-50
+      .subscible-wrapper.subscible-inline
+        .row
+          .col-md-2
+            %h3.subscribe-title Subscribe newsletter
+          .col-md-4
+            .subscribe-comment
+              %p Lorem Ipsum is simply dummy text of the printing and typesetting industry
+          .col-md-6
+            %form.subscible-form{:action => "index.html", :method => "GET"}
+              .form-group
+                %label.sr-only{:for => "subscribe-email"} Email
+                %input#subscribe-email.form-control{:placeholder => "Enter your email address", :type => "email"}
+              .form-submit
+                %button.btn.btn-lg.btn-primary{:type => "submit"} Subscribe email
+      / /.subscible-wrapper
+  / /.container
+/ /section
+%section
+  .container
+    .row
+      .col-md-6.col-sm-6
+        .awe-media.margin-bottom-20
+          .awe-media-image
+            %a{:href => "#"}
+              %img{:alt => "", :src => "./img/samples/banners/home/home-banner-1.png"}
+        / /.awe-media
+      .col-md-6.col-sm-6
+        .awe-media.margin-bottom-20
+          .awe-media-image
+            %a{:href => "#"}
+              %img{:alt => "", :src => "./img/samples/banners/home/home-banner-2.png"}
+          / /.awe-media
+    / /.row
+  / /.container
+/ /section

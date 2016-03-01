@@ -1,8 +1,8 @@
 .row
-	.col-md-1
-	.col-md-8
-		.box
-			=form_for([:admin, @product], html: { multipart: true }) do |f|
+	=form_for([:admin, @product], html: { multipart: true }) do |f|
+		.col-md-1
+		.col-md-5
+			.box
 				%p
 					=f.label "Выбрать категорию товара"
 					=f.collection_select :category_id, Category.all, :id, :name, { prompt: 'Выбрать категорию' }, class: 'form-control'
@@ -20,11 +20,46 @@
 					=f.number_field :sku, class: 'form-control'
 
 				%p
-					%h3 Опции
+					%h3 Раздел: Опции
 					=f.fields_for :options do |builder|
 						=render 'option_fields', f: builder
 						%br
 					=link_to_add_fields 'Добавить опцию', f, :options
 				%p
+					%hr
+						%h3 Раздел: фотографии
+						=file_field_tag :image, name: "images[]", id: 'fileupload', type: :file, multiple: true
+
+						-if @product.images.any?
+							.box
+								%h6 Удалить фотографии
+								%p
+									=f.fields_for :images do |builder|
+										=image_tag builder.object.image, width: 120
+										=builder.label :_destroy, 'Удалить фотографию'
+										=builder.check_box :_destroy
+										%br
+										%hr.short.alt
+				%p
 					=f.submit 'Сохранить'
-	.col-md-3
+		.col-md-5
+			.box
+				%p
+					=f.label 'Напряжение (Вольт)'
+					=f.number_field :voltage, class: 'form-control'
+				%p
+					=f.label 'Ток (ампер)'
+					=f.number_field :electric_current, class: 'form-control'
+			%p
+				%hr
+					%h3 Если товар нужно показать на главной в большом баннере
+				%p
+					=f.label 'Показывать?'
+					=f.check_box :hotproduct
+				%p
+					=f.label 'Загрузить большую фото (1450 на 500 лучше всего)'
+					=f.file_field :main_slider_image, type: :file
+				%p
+					=f.label 'Небольшой рекламный текст (3-5 слов)'
+					=f.text_field :advertising_main_slider
+		.col-md-3

@@ -4332,6 +4332,9 @@ h2.entry-title {
   width: 100% !important;
 }
 
+.product-transistor-thumbnail img {
+}
+
 .product-soldout {
   position: absolute;
   top: 0;

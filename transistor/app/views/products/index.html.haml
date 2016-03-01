@@ -1,8 +1,325 @@
-%h1 Все наши продукты, йоу
+.main-header.background.background-image-heading-products
+	.container
+		%h1 Список товаров
+#breadcrumb
+	.container
+		%ol.breadcrumb
+			%li
+				=link_to 'Главная', root_path
+			%li.active
+				%span Список товаров
 
--@products.each do |product|
-	%p
-		=product.name
-		%br
-		=product.intro_text
-
+.container
+	.row
+		.col-md-9.col-md-push-3
+			.product-header-actions
+				%form.form-inline{:action => "product-grid.html", :method => "POST"}
+					.row
+						.col-md-4.col-sm-6
+							.view-icons
+								/ %a.view-icon{:href => "#"}
+								/ 	%span.icon.icon-th
+								%a.view-icon.active{:href => "#"}
+									%span.icon.icon-th-list
+							.view-count
+								%span.text-muted
+									Всего
+									=@products.count
+									="товар#{russianize(@products.count)}"
+						.col-md-8.col-sm-6.col-xs-12
+							.form-show-sort
+								.form-group.pull-left
+									%label{:for => "p_show"} Показать
+									%select#p_show.form-control.input-sm{:name => "p_show"}
+										%option{:value => ""} 10
+										%option{:value => ""} 25
+										%option{:value => ""} 50
+									%strong на странице
+								/ /.form-group
+								.form-group.pull-right.text-right
+									%label{:for => "p_sort_by"} Сортировать
+									%select#p_sort_by.form-control.input-sm{:name => "p_sort_by"}
+										%option{:value => ""} Lastest
+										%option{:value => ""} Recommend
+								/ /.form-group
+					/ /.row
+			/ /.product-header-actions
+			.products
+				-@products.each do |product|
+					.col-md-12
+						.product.product-list
+							.product-media
+								.product-transistor-thumbnail
+									=link_to product do
+										=image_or_default(product)
+								/ /.product-thumbnail
+								.product-hover
+									.product-actions
+										%button
+											%span.icon.icon-shopping-bag
+										%button
+											%span.icon.icon-star
+										%button
+											%span.fa.fa-eye
+								/ /.product-hover
+								%span.product-label.hot
+									%span hot
+							/ /.product-media
+							.product-body
+								%h2.product-name
+									=link_to product.name, product, title: product.name
+								/ /.product-product
+								.product-category
+									%span 
+										=product.category.name
+								/ /.product-category
+								.product-price
+									%span.amount
+										от
+										=product.options.first.price
+										="\u20BD".encode('utf-8')
+								/ /.product-price
+								.product-stars
+									%span.rating
+										%span.star
+										%span.star
+										%span.star
+										%span.star
+										%span.star
+								.product-description
+									%p
+										=product.intro_text
+								.product-list-actions
+									/ %button.btn.btn-lg.btn-primary Add to cart
+									=link_to product do
+										%button.btn.btn-lg.btn-dark.btn-outline Просмотреть
+								/ /.product-actions
+							/ /.product-body
+						/ /.product
+			%ul.pagination
+				%li.pagination-prev
+					%a{:href => "#"}
+						%i.icon.icon-arrow-prev
+				%li
+					%a{:href => "#"} 1
+				%li.active
+					%a{:href => "#"} 2
+				%li
+					%a{:href => "#"} 3
+				%li
+					%a{:href => "#"} 4
+				%li
+					%a{:href => "#"} 5
+				%li
+					%span ...
+				%li
+					%a{:href => "#"} 15
+				%li.pagination-next
+					%a{:href => "#"}
+						%i.icon.icon-arrow-next
+			/ ./pagination
+		/ /.col-*
+		.col-md-3.col-md-pull-9
+			#shop-widgets-filters.shop-widgets-filters
+				#widget-area.widget-area
+					.widget.woocommerce.widget_product_categories
+						%h3.widget-title Категории
+						%ul
+							%li.active
+								=link_to 'Все товары', products_path
+							-Category.all.each do |category|
+								%li
+									=link_to category.name, '#'
+					/ /.widget
+					.widget.woocommerce
+						%h3.widget-title Sizes
+						.widget-content
+							%label.label-select
+								%select.form-control{:name => "product-sizes"}
+									%option{:value => ""} Size A
+									%option{:value => ""} Size B
+									%option{:value => ""} Size C
+									%option{:value => ""} Size D
+					/ /.widget
+					.widget
+						%h3.widget-title Brands
+						.widget-content
+							.awewoo-brand
+								.awewoo-brand-header
+									%input.form-control{:placeholder => "Find your brand", :type => "text"}
+								.awewoo-brand-content
+									.nano{:style => "max-height: 150px;"}
+										.nano-content
+											%ul
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Vans
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span The Hood
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Kill City
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Baby Milo
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Baby Milo
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span The Police
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Vans
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span The Hood
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Kill City
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Baby Milo
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Baby Milo
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span The Police
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Vans
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span The Hood
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Kill City
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Baby Milo
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Baby Milo
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span The Police
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Vans
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span The Hood
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Kill City
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Baby Milo
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span Baby Milo
+												%li
+													.checkbox
+														%label
+															%input{:type => "checkbox", :value => ""}
+																%span The Police
+					.widget.woocommerce.widget_product_prices_filter
+						%h3.widget-title Prices
+						.widget-content
+							.ranger-wrapper
+								#price-slider.ranger
+							.center.small.gray
+								%span Start from
+								%span#amount.dark.bold $35
+								%span to
+								%span.dark.bold $320
+					:javascript
+						$(function() { awePriceSlider(); });
+																	.widget
+						%h3.widget-title Colors
+						.wiget-content
+							.colors.square
+								%a{:href => "#", :title => ""}
+									%span.color.orange
+								%a{:href => "#", :title => ""}
+									%span.color.green
+								%a{:href => "#", :title => ""}
+									%span.color.blue
+								%a{:href => "#", :title => ""}
+									%span.color.dark
+								%a{:href => "#", :title => ""}
+									%span.color.gray
+								%a{:href => "#", :title => ""}
+									%span.color.white
+					.widget.woocommerce.widget_product_prices
+						%h3.widget-title Prices
+						%ul
+							%li
+								%a{:href => "#", :title => ""} None
+							%li
+								%a{:href => "#", :title => ""} $35	-	$100
+							%li.active
+								%a{:href => "#", :title => ""} $100 - $200
+							%li
+								%a{:href => "#", :title => ""} $200 - $300
+							%li
+								%a{:href => "#", :title => ""} $300	-	$400
+							%li
+								%a{:href => "#", :title => ""} $400	-	$500
+							%li
+								%a{:href => "#", :title => ""} $500	-	$600
+					/ /.widget
+			#open-filters
+				%i.fa.fa-filter
+				%span Filter
+		/ /.col-*
+	/ /.row
+/ /.container
